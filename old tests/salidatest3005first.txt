@@ -1,0 +1,61 @@
+array(7) {
+  [0]=>
+  string(3) "AAC"
+  [1]=>
+  string(4) "AAPL"
+  [2]=>
+  string(8) "NOEXISTE"
+  [3]=>
+  string(3) "ABG"
+  [4]=>
+  string(4) "TYCB"
+  [5]=>
+  string(4) "NEMD"
+  [6]=>
+  string(1) "T"
+}
+ Attempting to update ticker: AAC         12:09:43
+ Ticker Correctly Updated 
+
+ Attempting to update ticker: AAPL         12:10:49
+ Ticker Correctly Updated 
+
+ Attempting to update ticker: NOEXISTE         12:12:26<Error><Message>There is no data for the current request </Message></Error>
+ Ticker's EOL data failed, marked as tested
+
+ Ticker Not Updated 
+
+ Attempting to update ticker: ABG         12:12:28Previously updated
+
+ Ticker Not Updated 
+
+ Attempting to update ticker: TYCB         12:13:06 OTC ticker marked
+
+ Ticker Not Updated 
+
+ Attempting to update ticker: NEMD         12:13:10 OTC ticker marked
+
+ Ticker Not Updated 
+
+ Attempting to update ticker: T         12:13:13 Ticker added 
+ Id doesnt exist on reports_header 
+ 
+ Ticker Correctly Updated 
+
+ OTC Tickers: 
+array(2) {
+  [0]=>
+  string(4) "TYCB"
+  [1]=>
+  string(4) "NEMD"
+}
+ Attempting to update ticker: TYCB         12:15:10 Ticker added, price high than U$s 1
+ Id doesnt exist on reports_header 
+ 
+ Ticker Correctly Updated 
+
+ Attempting to update ticker: NEMD         12:16:43 Ticker marked as tested, price is under U$s 1
+ Id on tickers table doesnt exist 
+ 
+ Ticker Not Updated 
+

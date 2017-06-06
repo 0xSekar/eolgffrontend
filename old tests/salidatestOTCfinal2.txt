@@ -1,0 +1,17 @@
+array(1) {
+  [0]=>
+  string(8) "NOEXISTE"
+}
+ Attempting to update ticker: NOEXISTE         12:03:47<Error><Message>There is no data for the current request </Message></Error> Download Error !!!  EOL QTR FAILED
+
+ Ticker Not Updated 
+
+ OTC Tickers: 
+array(1) {
+  [0]=>
+  string(4) "NEMD"
+}
+ Attempting to update ticker: NEMD         12:03:50 Id intern doesnt exist 
+ 
+ Ticker Not Updated 
+

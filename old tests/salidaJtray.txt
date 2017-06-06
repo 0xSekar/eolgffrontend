@@ -1,0 +1,23 @@
+Actualizo ticker: CNABE    20:18:44
+<Error><Message>There is no data for the current request </Message></Error>
+ Download Error !!!  EOL QTR FAILED
+bool(false)
+
+Actualizo ticker: CMRO    20:18:45
+Id doesnt exist on reports_header 
+ bool(false)
+
+Actualizo ticker: OB    20:18:59
+Id doesnt exist on reports_header 
+ bool(false)
+
+Actualizo ticker: SYNT    20:19:08
+bool(true)
+
+Actualizo ticker: CUB    20:19:34
+bool(true)
+
+Actualizo ticker: FLIC    20:20:00
+bool(true)
+
+Actualizo ticker: FUTU    20:20:38

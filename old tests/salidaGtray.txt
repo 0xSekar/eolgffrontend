@@ -1,0 +1,29 @@
+Actualizo ticker: EFUT09:05:44
+<Error><Message>There is no data for the current request </Message></Error>
+ Download Error !!!  EOL QTR FAILED
+bool(false)
+
+Actualizo ticker: CWNOF09:05:46
+Id doesnt exist on reports_header 
+ bool(false)
+
+Actualizo ticker: HHHEF09:05:57
+Id doesnt exist on reports_header 
+ bool(false)
+
+Actualizo ticker: CNABE09:05:05
+<Error><Message>There is no data for the current request </Message></Error>
+ Download Error !!!  EOL QTR FAILED
+bool(false)
+
+Actualizo ticker: CMRO09:05:06
+Id doesnt exist on reports_header 
+ bool(false)
+
+Actualizo ticker: GMLP09:05:23
+bool(true)
+
+Actualizo ticker: WAL09:05:52
+bool(true)
+
+Actualizo ticker: GLNG09:05:30

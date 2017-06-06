@@ -1,0 +1,13 @@
+Actualizo ticker: string(4) "MNST"
+bool(true)
+
+Actualizo ticker: string(4) "EFUT"
+<Error><Message>There is no data for the current request </Message></Error>
+ Download Error !!!  EOL QTR FAILED
+bool(false)
+
+Actualizo ticker: string(5) "CWNOF"
+Id doesnt exist on reports_header 
+ bool(false)
+
+Actualizo ticker: string(4) "OIIM"

@@ -1,0 +1,42 @@
+array(5) {
+  [0]=>
+  string(1) "4"
+  [1]=>
+  string(2) "12"
+  [2]=>
+  string(2) "19"
+  [3]=>
+  string(4) "4869"
+  [4]=>
+  string(5) "13061"
+}
+array(5) {
+  [0]=>
+  string(3) "AAC"
+  [1]=>
+  string(4) "AAME"
+  [2]=>
+  string(4) "AAPL"
+  [3]=>
+  string(3) "IBM"
+  [4]=>
+  string(1) "T"
+}
+array(3) {
+  [0]=>
+  string(4) "AAME"
+  [1]=>
+  string(4) "AAPL"
+  [2]=>
+  string(3) "IBM"
+}
+Attempting to update ticker: AAME         13:21:29
+Ticker Correctly Updated 
+
+Attempting to update ticker: AAPL         13:21:53 Previously updated
+
+Ticker Not Updated 
+
+Attempting to update ticker: IBM         13:21:59
+Ticker Correctly Updated 
+

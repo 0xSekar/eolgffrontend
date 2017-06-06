@@ -1,0 +1,21 @@
+array(3) {
+  [0]=>
+  string(2) "AB"
+  [1]=>
+  string(2) "SQ"
+  [2]=>
+  string(3) "AAN"
+}
+ Attempting to update ticker: AB         10:14:34
+ Ticker Correctly Updated 
+
+ Attempting to update ticker: SQ         10:15:01
+ Ticker Correctly Updated 
+
+ Attempting to update ticker: AAN         10:15:24 Id doesnt exist on reports_header 
+ 
+ Ticker Correctly Updated 
+
+ OTC Tickers: 
+array(0) {
+}

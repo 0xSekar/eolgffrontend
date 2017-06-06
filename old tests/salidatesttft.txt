@@ -1,0 +1,11 @@
+array(1) {
+  [0]=>
+  string(8) "NOEXISTE"
+}
+ Attempting to update ticker: NOEXISTE         19:56:23<Error><Message>Other error in data source service</Message></Error> Download Error !!!  EOL QTR FAILED
+
+ Ticker Not Updated 
+
+ OTC Tickers: 
+array(0) {
+}

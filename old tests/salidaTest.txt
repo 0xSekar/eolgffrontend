@@ -1,0 +1,9 @@
+Actualizo ticker: AAC    20:35:18
+bool(true)
+
+Actualizo ticker: AAN    20:35:41
+bool(true)
+
+Actualizo ticker: AAPL    20:36:12
+bool(true)
+

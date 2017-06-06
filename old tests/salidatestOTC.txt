@@ -1,0 +1,50 @@
+array(8) {
+  [0]=>
+  string(3) "AAC"
+  [1]=>
+  string(3) "AAN"
+  [2]=>
+  string(4) "AAPL"
+  [3]=>
+  string(8) "NOEXISTE"
+  [4]=>
+  string(3) "ABG"
+  [5]=>
+  string(4) "TYCB"
+  [6]=>
+  string(4) "NEMD"
+  [7]=>
+  string(1) "T"
+}
+Actualizo ticker: AAC    17:08:29
+bool(true)
+
+Actualizo ticker: AAN    17:08:50
+bool(true)
+
+Actualizo ticker: AAPL    17:09:14
+bool(true)
+
+Actualizo ticker: NOEXISTE    17:09:39
+<Error><Message>There is no data for the current request </Message></Error>
+ Download Error !!!  EOL QTR FAILED
+bool(false)
+
+Actualizo ticker: ABG    17:09:40
+Already updated beforebool(false)
+
+Actualizo ticker: TYCB    17:09:48
+Id doesnt exist on reports_header 
+ bool(false)
+
+Actualizo ticker: NEMD    17:09:58
+Id doesnt exist on reports_header 
+ bool(false)
+
+Actualizo ticker: T    17:10:09
+
+Ticker addedId doesnt exist on reports_header 
+ bool(false)
+
+array(0) {
+}

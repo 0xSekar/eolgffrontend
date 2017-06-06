@@ -1,0 +1,17 @@
+array(3) {
+  [0]=>
+  string(3) "AAC"
+  [1]=>
+  string(3) "AAN"
+  [2]=>
+  string(4) "AAPL"
+}
+Actualizo ticker: AAC    20:46:33
+bool(true)
+
+Actualizo ticker: AAN    20:46:50
+bool(true)
+
+Actualizo ticker: AAPL    20:47:16
+bool(true)
+

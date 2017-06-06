@@ -1,0 +1,8 @@
+array(1) {
+  [0]=>
+  string(8) "NOEXISTE"
+}
+Actualizo ticker: NOEXISTE    15:53:04
+Id intern doesnt exist 
+ bool(false)
+

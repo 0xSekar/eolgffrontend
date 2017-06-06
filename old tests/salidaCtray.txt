@@ -1,0 +1,7 @@
+Actualizo ticker: string(3) "PEG"
+bool(true)
+
+Actualizo ticker: string(3) "ELY"
+bool(true)
+
+Actualizo ticker: string(4) "MNST"

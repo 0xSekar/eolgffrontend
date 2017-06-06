@@ -1,0 +1,40 @@
+array(4) {
+  [0]=>
+  string(8) "NOEXISTE"
+  [1]=>
+  string(4) "TYCB"
+  [2]=>
+  string(4) "NEMD"
+  [3]=>
+  string(1) "T"
+}
+Attempting to update ticker: NOEXISTE         11:59:05
+<Error><Message>There is no data for the current request </Message></Error>
+ Download Error !!!  EOL QTR FAILED
+                  Ticker Not Updated 
+
+Attempting to update ticker: TYCB         11:59:06
+string(3) "OTC"
+
+OTC ticker marked                  Ticker Not Updated 
+
+Attempting to update ticker: NEMD         11:59:09
+string(3) "OTC"
+
+OTC ticker marked                  Ticker Not Updated 
+
+Attempting to update ticker: T         11:59:12
+Id doesnt exist on reports_header 
+                   Ticker Not Updated 
+
+array(2) {
+  [0]=>
+  string(4) "TYCB"
+  [1]=>
+  string(4) "NEMD"
+}
+Attempting to update ticker: TYCB         11:59:21
+string(3) "OTC"
+
+Ticker added - Not OTC
+Database ErrorLine: 251 - SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'TYCB' for key 'ticker'

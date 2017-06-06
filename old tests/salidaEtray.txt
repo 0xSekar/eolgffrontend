@@ -1,0 +1,12 @@
+Actualizo ticker: EFUT<Error><Message>There is no data for the current request </Message></Error>
+ Download Error !!!  EOL QTR FAILED
+bool(false)
+
+Actualizo ticker: CWNOFId doesnt exist on reports_header 
+ bool(false)
+
+Actualizo ticker: OIIMbool(true)
+
+Actualizo ticker: COGLFbool(true)
+
+Actualizo ticker: RS

@@ -1,0 +1,65 @@
+array(8) {
+  [0]=>
+  string(3) "AAC"
+  [1]=>
+  string(3) "AAN"
+  [2]=>
+  string(4) "AAPL"
+  [3]=>
+  string(8) "NOEXISTE"
+  [4]=>
+  string(3) "ABG"
+  [5]=>
+  string(4) "TYCB"
+  [6]=>
+  string(4) "NEMD"
+  [7]=>
+  string(1) "T"
+}
+Attempting to update ticker: AAC         12:05:30
+Ticker Correctly Updated 
+
+Attempting to update ticker: AAN         12:05:49
+Ticker Correctly Updated 
+
+Attempting to update ticker: AAPL         12:06:16
+Ticker Correctly Updated 
+
+Attempting to update ticker: NOEXISTE         12:06:55
+<Error><Message>There is no data for the current request </Message></Error>
+ Download Error !!!  EOL QTR FAILED
+Ticker Not Updated 
+
+Attempting to update ticker: ABG         12:06:57
+
+Previously updated
+Ticker Not Updated 
+
+Attempting to update ticker: TYCB         12:07:05
+
+Id doesnt exist on reports_header 
+ Ticker Not Updated 
+
+Attempting to update ticker: NEMD         12:07:16
+
+OTC ticker marked
+Ticker Not Updated 
+
+Attempting to update ticker: T         12:07:18
+
+Ticker added - Not OTC
+
+Id doesnt exist on reports_header 
+ Ticker Not Updated 
+
+array(1) {
+  [0]=>
+  string(4) "NEMD"
+}
+Attempting to update ticker: NEMD         12:07:29
+
+Ticker added - Not OTC
+
+Id doesnt exist on reports_header 
+ Ticker Not Updated 
+
