@@ -1,0 +1,4 @@
+Attempting to update ticker: AAPL    22:51:26 Forced updated
+
+Ticker Correctly Updated 
+

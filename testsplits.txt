@@ -1,0 +1,19 @@
+array(3) {
+  [0]=>
+  string(4) "AAPL"
+  [1]=>
+  string(3) "AAC"
+  [2]=>
+  string(3) "dsf"
+}
+string(5) "2.110"
+string(6) "-0.030"
+array(1) {
+  [0]=>
+  string(3) "AAC"
+}
+string(0) ""
+array(1) {
+  [0]=>
+  string(3) "AAC"
+}

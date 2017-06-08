@@ -122,7 +122,7 @@ function ckeckNDown($ticker, $AnnLot, $QtrLot, $OTC = false, $force = false){
         $eolFY = strval($arrayeol['fiscalYear'][$col]);
         $eolFQ = strval($arrayeol['FiscalQuarter'][$col]);               
 
-        if($force==FALSE){
+        //if($force==FALSE){
             // ******** BD information Fetch *********
             try {
                 $res = $db->prepare("SELECT fiscal_year, fiscal_quarter FROM reports_header WHERE ticker_id = ? ORDER BY fiscal_year ASC, fiscal_quarter ASC"); //order by fiscal y y dsp fq
@@ -137,17 +137,19 @@ function ckeckNDown($ticker, $AnnLot, $QtrLot, $OTC = false, $force = false){
             if($line == -1){
                 echo " Id doesnt exist on reports_header \n ";//forzar descarga
                 $force = TRUE;
+                $dbFY = 2000;
+                $dbFQ = 1;
             }else{
                 $dbFY = $row[$line]['fiscal_year'];
                 $dbFQ = $row[$line]['fiscal_quarter'];
             }
-        }
+        //}
 
         
         if($eolFY>$dbFY || ($eolFY==$dbFY && $eolFQ>$dbFQ) || $force == TRUE || $proc == TRUE){ 
             $downOK = downNParse($ticker, $arrayeol, $AnnLot, $QtrLot);
 
-            if($downOK){ 
+            if($downOK & $force == FALSE){ 
                 try {
                     $res = $db->prepare("UPDATE tickers_proedgard_updates SET downloaded = 'Y', updated_date = '".$today."' WHERE (ticker = ? AND downloaded is null) ");
                     $res->execute(array(strval($ticker)));
@@ -155,7 +157,47 @@ function ckeckNDown($ticker, $AnnLot, $QtrLot, $OTC = false, $force = false){
                     echo "\nDatabase Error"; //user message
                     die("Line: ".__LINE__." - ".$ex->getMessage());
                 }
+                try {
+                    $res = $db->prepare("UPDATE gf_split_parser SET updated_date = '".$today."' WHERE (ticker = ? AND  updated_date is null) ");            
+                    $res->execute(array(strval($ticker)));
+                } catch(PDOException $ex) {
+                    echo "\nDatabase Error"; //user message
+                    die("Line: ".__LINE__." - ".$ex->getMessage());
+                }
                 return TRUE;
+            }else{
+                if ($downOK & $force == TRUE) {
+                    if($eolFY>$dbFY || ($eolFY==$dbFY && $eolFQ>$dbFQ)) {
+                        try {
+                            $res = $db->prepare("UPDATE tickers_proedgard_updates SET downloaded = 'Y', updated_date = '".$today."' WHERE (ticker = ? AND downloaded is null) ");
+                            $res->execute(array(strval($ticker)));
+                        } catch(PDOException $ex) {
+                            echo "\nDatabase Error"; //user message
+                            die("Line: ".__LINE__." - ".$ex->getMessage());
+                        }
+                        try {
+                            $res = $db->prepare("UPDATE gf_split_parser SET updated_date = '".$today."' WHERE (ticker = ? AND  updated_date is null) ");            
+                            $res->execute(array(strval($ticker)));
+                        } catch(PDOException $ex) {
+                            echo "\nDatabase Error"; //user message
+                            die("Line: ".__LINE__." - ".$ex->getMessage());
+                        }
+                        return TRUE;
+                    } else {
+                        try {
+                            $res = $db->prepare("UPDATE tickers_proedgard_updates SET tested_for_today = '".$today."' WHERE (ticker = ? AND downloaded is null)");
+                            $res->execute(array(strval($ticker)));
+                        } catch(PDOException $ex) {
+                            echo "\nDatabase Error"; //user message
+                            die("Line: ".__LINE__." - ".$ex->getMessage());
+                        }
+                        echo " Forced updated\n";
+                        return TRUE;
+                    }
+                }else{
+                    echo " Download Error !!!  EOL QTR FAILED\n";
+                    return FALSE;
+                }
             }            
         }else{
             try {
