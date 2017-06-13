@@ -35,7 +35,7 @@ foreach($list as $i => $ticker){
     $chek = ckeckNDown($ticker, $AnnLot, $QtrLot, FALSE, TRUE);
     echo "\n";
     try {
-        $res = $db->prepare("UPDATE gf_split_parser SET updated_date = '".$today."' WHERE (ticker = ? AND  updated_date is null) ");            
+        $res = $db->prepare("UPDATE tickers_split_parser SET updated_date = '".$today."' WHERE (ticker = ? AND  updated_date is null) ");            
         $res->execute(array(strval($ticker)));
     } catch(PDOException $ex) {
         echo "\nDatabase Error"; //user message
@@ -54,7 +54,7 @@ function listOfTickers(){
     $tickerstoupdate = array();
     $today = date('Y/m/d');
     try {
-        $res = $db->prepare("SELECT ticker FROM gf_split_parser WHERE updated_date is null AND (DATEDIFF('".$today."',tested_for_today) > 2 OR tested_for_today is null)");        
+        $res = $db->prepare("SELECT ticker FROM tickers_split_parser WHERE updated_date is null AND (DATEDIFF('".$today."',tested_for_today) > 2 OR tested_for_today is null)");        
         $res->execute();
     } catch(PDOException $ex) {
         echo "\nDatabase Error"; //user message
@@ -78,7 +78,7 @@ function listOfTickers(){
                 } 
             }            
             try {
-                $res = $db->prepare("SELECT ticker FROM gf_split_parser WHERE ticker = '".$value."' AND  old_eps != '".$EPS."' ");            
+                $res = $db->prepare("SELECT ticker FROM tickers_split_parser WHERE ticker = '".$value."' AND  old_eps != '".$EPS."' ");            
                 $res->execute();
             } catch(PDOException $ex) {
                 echo "\nDatabase Error"; //user message
@@ -90,7 +90,7 @@ function listOfTickers(){
                 
             }else{
                 try {
-                    $res = $db->prepare("UPDATE gf_split_parser SET tested_for_today = '".$today."' WHERE (ticker = '".$value."' AND  tested_for_today is null) ");            
+                    $res = $db->prepare("UPDATE tickers_split_parser SET tested_for_today = '".$today."' WHERE (ticker = '".$value."' AND  tested_for_today is null) ");            
                     $res->execute();
                 } catch(PDOException $ex) {
                     echo "\nDatabase Error"; //user message

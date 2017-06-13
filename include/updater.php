@@ -158,7 +158,7 @@ function ckeckNDown($ticker, $AnnLot, $QtrLot, $OTC = false, $force = false){
                     die("Line: ".__LINE__." - ".$ex->getMessage());
                 }
                 try {
-                    $res = $db->prepare("UPDATE gf_split_parser SET updated_date = '".$today."' WHERE (ticker = ? AND  updated_date is null) ");            
+                    $res = $db->prepare("UPDATE tickers_split_parser SET updated_date = '".$today."' WHERE (ticker = ? AND  updated_date is null) ");            
                     $res->execute(array(strval($ticker)));
                 } catch(PDOException $ex) {
                     echo "\nDatabase Error"; //user message
@@ -176,7 +176,7 @@ function ckeckNDown($ticker, $AnnLot, $QtrLot, $OTC = false, $force = false){
                             die("Line: ".__LINE__." - ".$ex->getMessage());
                         }
                         try {
-                            $res = $db->prepare("UPDATE gf_split_parser SET updated_date = '".$today."' WHERE (ticker = ? AND  updated_date is null) ");            
+                            $res = $db->prepare("UPDATE tickers_split_parser SET updated_date = '".$today."' WHERE (ticker = ? AND  updated_date is null) ");            
                             $res->execute(array(strval($ticker)));
                         } catch(PDOException $ex) {
                             echo "\nDatabase Error"; //user message

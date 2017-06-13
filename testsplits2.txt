@@ -1,0 +1,4 @@
+Attempting to update ticker: AMZN    21:03:30 Forced updated
+
+Ticker Correctly Updated 
+

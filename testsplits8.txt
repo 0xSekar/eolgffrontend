@@ -1,0 +1,17 @@
+array(3) {
+  [0]=>
+  string(4) "AAPL"
+  [1]=>
+  string(4) "MSFT"
+  [2]=>
+  string(4) "AMZN"
+}
+string(5) "2.110"
+string(5) "0.620"
+string(5) "1.520"
+array(2) {
+  [0]=>
+  string(4) "MSFT"
+  [1]=>
+  string(4) "AMZN"
+}

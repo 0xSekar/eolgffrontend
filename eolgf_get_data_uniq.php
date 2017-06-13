@@ -21,7 +21,7 @@ $AnnLot = 15;
 $QtrLot = 20;
 
 //$ticker = $_REQUEST['ticker'];
-$ticker = 'AAC';
+$ticker = 'BIG';
 
 if($ticker!=NULL){
     echo "Attempting to update ticker: ". $ticker;

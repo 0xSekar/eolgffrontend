@@ -1,0 +1,3 @@
+Attempting to update ticker: BIG    21:11:23
+Ticker Correctly Updated 
+
