@@ -23,6 +23,12 @@ $QtrLot = 20;
 $list = listOfTickers();
 $lot = count($list);
 
+echo "  \n\n A on Blacklist :  \n\n";
+
+echo " List :  \n\n";
+var_dump($list);
+
+/*
 foreach($list as $i => $ticker){
     if($i > 25){
         continue;
@@ -34,7 +40,7 @@ foreach($list as $i => $ticker){
     if($chek){echo "Ticker Correctly Updated \n";}else{echo "Ticker Not Updated \n";};
     echo "\n";
 }
-
+*/
 
 // --------------------------------- Functions --------------------------------- 
 
@@ -42,7 +48,7 @@ function listOfTickers(){
     $db = Database::GetInstance(); 
     $today = date('Y/m/d');
     try {
-        $res = $db->prepare("SELECT ticker FROM tickers WHERE is_old = FALSE");
+        $res = $db->prepare("SELECT a.ticker FROM tickers AS a LEFT JOIN osv_blacklist AS b ON a.ticker = b.ticker WHERE a.is_old = FALSE AND b.ticker is null");
         
         $res->execute();
     } catch(PDOException $ex) {
@@ -51,7 +57,6 @@ function listOfTickers(){
     }
     $row = $res->fetchAll(PDO::FETCH_COLUMN);
     $row = array_unique($row);
-    var_dump($row);
     return $row;
 }
 

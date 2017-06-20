@@ -21,15 +21,25 @@ $AnnLot = 15;
 $QtrLot = 20;
 
 //$ticker = $_REQUEST['ticker'];
-$ticker = 'BIG';
+$ticker = 'A';
 
 if($ticker!=NULL){
-    echo "Attempting to update ticker: ". $ticker;
-    echo date('    H:i:s');
-    $chek = ckeckNDown($ticker, $AnnLot, $QtrLot, FALSE, TRUE);
-    echo "\n";    
-    if($chek){echo "Ticker Correctly Updated \n";}else{echo "Ticker Not Updated \n";};
-    echo "\n";
+    try {
+            $res = $db->prepare("SELECT ticker FROM osv_blacklist WHERE ticker = '".$ticker."' ");            
+            $res->execute();
+        } catch(PDOException $ex) {
+            echo "\nDatabase Error"; //user message
+            die("Line: ".__LINE__." - ".$ex->getMessage());
+        }        
+    $res = $res->fetchAll(PDO::FETCH_COLUMN);
+    if(!isset($res[0])){
+        echo "Attempting to update ticker: ". $ticker;
+        echo date('    H:i:s');
+        $chek = ckeckNDown($ticker, $AnnLot, $QtrLot, FALSE, TRUE);
+        echo "\n";    
+        if($chek){echo "Ticker Correctly Updated \n";}else{echo "Ticker Not Updated \n";};
+        echo "\n";
+    }
 }
 
 ?>

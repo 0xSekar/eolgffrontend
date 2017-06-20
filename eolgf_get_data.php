@@ -23,6 +23,12 @@ $QtrLot = 20;
 $list = listOfTickers();
 $lot = count($list);
 
+
+echo " T on Blacklist :  \n\n";
+
+echo " List :  \n\n";
+var_dump($list);
+/*
 foreach($list as $i => $ticker){
     if($i > 25){
         continue;
@@ -33,12 +39,16 @@ foreach($list as $i => $ticker){
     echo "\n";
     if($chek){echo " Ticker Correctly Updated \n";}else{echo " Ticker Not Updated \n";};
     echo "\n";
-}
+}*/
 
 echo " OTC Tickers: \n";
 $list = listOfTickersOTC();
 $lot = count($list);
 
+echo " OTC List :  \n\n";
+var_dump($list);
+
+/*
 foreach($list as $i => $ticker){
     if($i > 25){
         continue;
@@ -49,7 +59,7 @@ foreach($list as $i => $ticker){
     echo "\n";    
     if($chek){echo " Ticker Correctly Updated \n";}else{echo " Ticker Not Updated \n";};
     echo "\n";
-}
+}*/
 
 
 // --------------------------------- Functions --------------------------------- 
@@ -58,15 +68,15 @@ function listOfTickers(){
     $db = Database::GetInstance(); 
     $today = date('Y/m/d');
     try {
-        $res = $db->prepare("SELECT ticker FROM tickers_proedgard_updates WHERE (downloaded is null 
+        $res = $db->prepare("SELECT a.ticker FROM tickers_proedgard_updates AS a LEFT JOIN osv_blacklist AS b ON a.ticker = b.ticker WHERE (a.downloaded is null AND b.ticker is null 
             AND 
-            (subject LIKE '%filed a 20_F %' OR subject LIKE '%filed a 20_F/A %' OR subject LIKE '%filed a 10_Q %' OR subject LIKE '%filed a 10_Q/A %' OR subject LIKE '%filed a 10-K %' OR subject LIKE '%filed a 10-K/A %') 
+            (a.subject LIKE '%filed a 20_F %' OR a.subject LIKE '%filed a 20_F/A %' OR a.subject LIKE '%filed a 10_Q %' OR a.subject LIKE '%filed a 10_Q/A %' OR a.subject LIKE '%filed a 10-K %' OR a.subject LIKE '%filed a 10-K/A %') 
             AND (
-            (DATEDIFF('".$today."',insdate) > 90 AND (tested_for_today is null OR (tested_for_today is not null AND DATEDIFF('".$today."', tested_for_today)>6))) 
+            (DATEDIFF('".$today."',a.insdate) > 90 AND (a.tested_for_today is null OR (a.tested_for_today is not null AND DATEDIFF('".$today."', a.tested_for_today)>6))) 
             OR 
-            ( DATEDIFF('".$today."',insdate) <= 90 AND (tested_for_today is null OR (tested_for_today is not null AND DATEDIFF('".$today."', tested_for_today)>1 )))   
+            ( DATEDIFF('".$today."',a.insdate) <= 90 AND (a.tested_for_today is null OR (a.tested_for_today is not null AND DATEDIFF('".$today."', a.tested_for_today)>1 )))   
             ) 
-            AND otc != 'Y')");
+            AND a.otc != 'Y')");
         
         $res->execute();
     } catch(PDOException $ex) {
@@ -75,7 +85,6 @@ function listOfTickers(){
     }
     $row = $res->fetchAll(PDO::FETCH_COLUMN);
     $row = array_unique($row);
-    var_dump($row);
     return $row;
 }
 
@@ -83,15 +92,15 @@ function listOfTickersOTC(){
     $db = Database::GetInstance(); 
     $today = date('Y/m/d');
     try {
-        $res = $db->prepare("SELECT ticker FROM tickers_proedgard_updates WHERE (downloaded is null 
+        $res = $db->prepare("SELECT a.ticker FROM tickers_proedgard_updates AS a LEFT JOIN osv_blacklist AS b ON a.ticker = b.ticker WHERE (a.downloaded is null AND b.ticker is null
             AND 
-            (subject LIKE '%filed a 20_F %' OR subject LIKE '%filed a 20_F/A %' OR subject LIKE '%filed a 10_Q %' OR subject LIKE '%filed a 10_Q/A %' OR subject LIKE '%filed a 10-K %' OR subject LIKE '%filed a 10-K/A %') 
+            (a.subject LIKE '%filed a 20_F %' OR a.subject LIKE '%filed a 20_F/A %' OR a.subject LIKE '%filed a 10_Q %' OR a.subject LIKE '%filed a 10_Q/A %' OR a.subject LIKE '%filed a 10-K %' OR a.subject LIKE '%filed a 10-K/A %') 
             AND (
-            (DATEDIFF('".$today."',insdate) > 90 AND (tested_for_today is null OR (tested_for_today is not null AND DATEDIFF('".$today."', tested_for_today)>6))) 
+            (DATEDIFF('".$today."',a.insdate) > 90 AND (a.tested_for_today is null OR (a.tested_for_today is not null AND DATEDIFF('".$today."', a.tested_for_today)>6))) 
             OR 
-            ( DATEDIFF('".$today."',insdate) <= 90 AND (tested_for_today is null OR (tested_for_today is not null AND DATEDIFF('".$today."', tested_for_today)>1 )))   
+            ( DATEDIFF('".$today."',a.insdate) <= 90 AND (a.tested_for_today is null OR (a.tested_for_today is not null AND DATEDIFF('".$today."', a.tested_for_today)>1 )))   
             ) 
-            AND otc = 'Y') ");        
+            AND a.otc = 'Y') ");        
         $res->execute();
     } catch(PDOException $ex) {
         echo "\nDatabase Error"; //user message
@@ -99,7 +108,6 @@ function listOfTickersOTC(){
     }
     $row = $res->fetchAll(PDO::FETCH_COLUMN);
     $row = array_unique($row);
-    var_dump($row);
     return $row;
 }
 

@@ -1,0 +1,27 @@
+array(4) {
+  [0]=>
+  string(1) "T"
+  [1]=>
+  string(3) "IBM"
+  [2]=>
+  string(4) "MSFT"
+  [3]=>
+  string(4) "GILD"
+}
+ Attempting to update ticker: T         20:20:48 Previously updated
+
+ Ticker Not Updated 
+
+ Attempting to update ticker: IBM         20:20:57
+ Ticker Correctly Updated 
+
+ Attempting to update ticker: MSFT         20:21:19 Previously updated
+
+ Ticker Not Updated 
+
+ Attempting to update ticker: GILD         20:21:26
+ Ticker Correctly Updated 
+
+ OTC Tickers: 
+array(0) {
+}

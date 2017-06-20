@@ -1,0 +1,12 @@
+ CRAP on Blacklist :  
+
+ List :  
+
+array(3) {
+  [0]=>
+  string(3) "AAC"
+  [1]=>
+  string(4) "AAME"
+  [2]=>
+  string(4) "AAPL"
+}

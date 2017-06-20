@@ -1,0 +1,58 @@
+array(7) {
+  [0]=>
+  string(4) "AAPL"
+  [1]=>
+  string(1) "T"
+  [2]=>
+  string(3) "IBM"
+  [3]=>
+  string(4) "MSFT"
+  [4]=>
+  string(4) "GILD"
+  [5]=>
+  string(4) "AMZN"
+  [6]=>
+  string(3) "BIG"
+}
+string(5) "2.110"
+string(5) "0.560"
+string(5) "1.860"
+string(5) "0.620"
+string(5) "2.070"
+string(5) "1.520"
+string(5) "1.160"
+array(6) {
+  [0]=>
+  string(1) "T"
+  [1]=>
+  string(3) "IBM"
+  [2]=>
+  string(4) "MSFT"
+  [3]=>
+  string(4) "GILD"
+  [4]=>
+  string(4) "AMZN"
+  [5]=>
+  string(3) "BIG"
+}
+Attempting to update ticker: T         20:27:35 Forced updated
+
+Ticker Correctly Updated 
+
+Attempting to update ticker: IBM         20:27:54
+Ticker Correctly Updated 
+
+Attempting to update ticker: MSFT         20:28:14 Forced updated
+
+Ticker Correctly Updated 
+
+Attempting to update ticker: GILD         20:28:31
+Ticker Correctly Updated 
+
+Attempting to update ticker: AMZN         20:28:49 Forced updated
+
+Ticker Correctly Updated 
+
+Attempting to update ticker: BIG         20:29:14
+Ticker Correctly Updated 
+

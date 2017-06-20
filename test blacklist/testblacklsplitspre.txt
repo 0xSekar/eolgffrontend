@@ -1,0 +1,16 @@
+array(2) {
+  [0]=>
+  string(4) "AAPL"
+  [1]=>
+  string(3) "AAN"
+}
+string(5) "2.110"
+string(5) "0.750"
+ CRAP on Blacklist :  
+
+ List :  
+
+array(1) {
+  [0]=>
+  string(3) "AAN"
+}

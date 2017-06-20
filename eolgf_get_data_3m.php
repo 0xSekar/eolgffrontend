@@ -23,8 +23,11 @@ $QtrLot = 20;
 $list = listOfTickers();
 $lot = count($list);
 
-var_dump($list);
+echo " AAME on Blacklist :  \n\n";
 
+echo " List :  \n\n";
+var_dump($list);
+/*
 foreach($list as $i => $ticker){
     if($i > 25){
         continue;
@@ -36,7 +39,7 @@ foreach($list as $i => $ticker){
     if($chek){echo "Ticker Correctly Updated \n";}else{echo "Ticker Not Updated \n";};
     echo "\n";
     
-}
+}*/
 
 
 // --------------------------------- Functions --------------------------------- 
@@ -67,26 +70,36 @@ function listOfTickers(){
     }    
     foreach ($tickers as $key => $value) {
         try {
-            $res = $db->prepare("SELECT ticker FROM tickers_proedgard_updates WHERE ticker = '".$value."' AND ((DATEDIFF('".$today."', tested_for_today)>7) OR tested_for_today is null) AND downloaded is null" );            
-            $res->execute();
-        } catch(PDOException $ex) {
-            echo "\nDatabase Error"; //user message
-            die("Line: ".__LINE__." - ".$ex->getMessage());
-        }
+                $res = $db->prepare("SELECT ticker FROM osv_blacklist WHERE ticker = '".$value."' ");            
+                $res->execute();
+            } catch(PDOException $ex) {
+                echo "\nDatabase Error"; //user message
+                die("Line: ".__LINE__." - ".$ex->getMessage());
+            }        
         $res = $res->fetchAll(PDO::FETCH_COLUMN);
-        if(isset($res[0])){
-            $tickerstoupdate[] = $res[0];
-        }else{
+        if(!isset($res[0])){
             try {
-                $res = $db->prepare("SELECT ticker FROM tickers_proedgard_updates WHERE ticker = '".$value."'" );            
+                $res = $db->prepare("SELECT ticker FROM tickers_proedgard_updates WHERE ticker = '".$value."' AND ((DATEDIFF('".$today."', tested_for_today)>7) OR tested_for_today is null) AND downloaded is null" );           
                 $res->execute();
             } catch(PDOException $ex) {
                 echo "\nDatabase Error"; //user message
                 die("Line: ".__LINE__." - ".$ex->getMessage());
             }
             $res = $res->fetchAll(PDO::FETCH_COLUMN);
-            if(!isset($res[0])){
-                $tickerstoupdate[] = $value;
+            if(isset($res[0])){
+                $tickerstoupdate[] = $res[0];
+            }else{
+                try {
+                    $res = $db->prepare("SELECT ticker FROM tickers_proedgard_updates WHERE ticker = '".$value."' " );            
+                    $res->execute();
+                } catch(PDOException $ex) {
+                    echo "\nDatabase Error"; //user message
+                    die("Line: ".__LINE__." - ".$ex->getMessage());
+                }
+                $res = $res->fetchAll(PDO::FETCH_COLUMN);
+                if(!isset($res[0])){
+                    $tickerstoupdate[] = $value;
+                }
             }
         }
     }

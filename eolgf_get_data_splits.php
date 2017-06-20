@@ -24,8 +24,13 @@ $QtrLot = 20;
 $list = listOfTickers();
 $lot = count($list);
 
+echo "  \n\n AAN on Blacklist :  \n\n";
+
+echo " List :  \n\n";
 var_dump($list);
-exit;
+
+
+/*
 foreach($list as $i => $ticker){
     if($i > 25){
         continue;
@@ -34,17 +39,28 @@ foreach($list as $i => $ticker){
     echo date('         H:i:s');
     $chek = ckeckNDown($ticker, $AnnLot, $QtrLot, FALSE, TRUE);
     echo "\n";
-    try {
-        $res = $db->prepare("UPDATE tickers_split_parser SET updated_date = '".$today."' WHERE (ticker = ? AND  updated_date is null) ");            
-        $res->execute(array(strval($ticker)));
-    } catch(PDOException $ex) {
-        echo "\nDatabase Error"; //user message
-        die("Line: ".__LINE__." - ".$ex->getMessage());
-    }
-    if($chek){echo "Ticker Correctly Updated \n";}else{echo "Ticker Not Updated \n";};
-    echo "\n";
     
-}
+    if($chek){
+        try {
+            $res = $db->prepare("UPDATE tickers_split_parser SET updated_date = '".$today."' WHERE (ticker = ? AND  updated_date is null) ");            
+            $res->execute(array(strval($ticker)));
+        } catch(PDOException $ex) {
+            echo "\nDatabase Error"; //user message
+            die("Line: ".__LINE__." - ".$ex->getMessage());
+        }
+        echo "Ticker Correctly Updated \n";
+    }else{
+        try {
+            $res = $db->prepare("UPDATE tickers_split_parser SET tested_for_today = '".$today."' WHERE (ticker = ? AND  tested_for_today is null) ");            
+            $res->execute(array(strval($ticker)));
+        } catch(PDOException $ex) {
+            echo "\nDatabase Error"; //user message
+            die("Line: ".__LINE__." - ".$ex->getMessage());
+        }
+        echo "Ticker Not Updated \n";
+    };
+    echo "\n";       
+}*/
 
 
 // --------------------------------- Functions --------------------------------- 
@@ -54,7 +70,7 @@ function listOfTickers(){
     $tickerstoupdate = array();
     $today = date('Y/m/d');
     try {
-        $res = $db->prepare("SELECT ticker FROM tickers_split_parser WHERE updated_date is null AND (DATEDIFF('".$today."',tested_for_today) > 2 OR tested_for_today is null)");        
+        $res = $db->prepare("SELECT a.ticker FROM tickers_split_parser AS a LEFT JOIN osv_blacklist AS b ON a.ticker = b.ticker WHERE a.updated_date is null AND b.ticker is null AND (DATEDIFF('".$today."',a.tested_for_today) > 2 OR a.tested_for_today is null)");        
         $res->execute();
     } catch(PDOException $ex) {
         echo "\nDatabase Error"; //user message

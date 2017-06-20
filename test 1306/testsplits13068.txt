@@ -1,0 +1,34 @@
+array(4) {
+  [0]=>
+  string(4) "AAPL"
+  [1]=>
+  string(1) "T"
+  [2]=>
+  string(4) "MSFT"
+  [3]=>
+  string(4) "AMZN"
+}
+string(5) "2.110"
+string(5) "0.560"
+string(5) "0.620"
+string(5) "1.520"
+array(3) {
+  [0]=>
+  string(1) "T"
+  [1]=>
+  string(4) "MSFT"
+  [2]=>
+  string(4) "AMZN"
+}
+Attempting to update ticker: T         20:23:40 Forced updated
+
+Ticker Correctly Updated 
+
+Attempting to update ticker: MSFT         20:24:03 Forced updated
+
+Ticker Correctly Updated 
+
+Attempting to update ticker: AMZN         20:24:30 Forced updated
+
+Ticker Correctly Updated 
+
