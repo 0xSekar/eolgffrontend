@@ -1,7 +1,8 @@
 <?php
 //Webservice to process alerts coming from pro.edgar sent to gmail through zapier
 //Mar 27 2016: Include also the filed date as new field, extracted from subject line
-include_once('./db/database.php');
+include_once('./config.php');
+include_once('./db/db.php');
 $db = Database::GetInstance(); 
 
 $emailcontents = $_POST['contents'];
@@ -37,34 +38,15 @@ $s = $row['status'];
 if ($key == null OR $key == "" OR empty($key)) {
     echo "Invalid appkey</br>\n";
 } else {
-    if (strpos($emailsubject, 'filed a NT 10-K') !== true) {
-        $params = array(
-            'ticker' => $ticker,
-            'eol_ticker' => $eol_ticker
-        );
-        $query = "select * from eol_cik_ticker_list where ticker =:ticker or ticker =:eol_ticker limit 1";
-        try {
-            $result = $db->prepare($query);
-            $result->execute($params);
-        } catch(PDOException $ex) {
-            echo "\nDatabase Error"; //user message
-            die("Line: ".__LINE__." - ".$ex->getMessage());
-        }
-        $row = $result->fetch();
-        $ticker_lookup = $row['ticker'];
-        $cik_code = $row['cik'];
-        
-        $fileddate = trim(get_string_between($emailsubject, 'on', 'at'));
-        
+    if (strpos($emailsubject, 'filed a NT 10-K') !== true) {        
+        $fileddate = trim(get_string_between($emailsubject, 'on', 'at'));        
         $my_date = date('Y-m-d', strtotime($fileddate));
         $params = array(
             'emailsubject' => $emailsubject,
-            'ticker' => $ticker,
-            'ticker_lookup' => $ticker_lookup,
-            'cik_code' => $cik_code,
+            'ticker' => $ticker,            
             'my_date' => $my_date
         );
-        $sql = "INSERT INTO eol_proedgar_email (subject, ticker, insdate, ticker_lookup, cik_code, downloaded,filed_date)  VALUES  (:emailsubject, :ticker, now(),:ticker_lookup, :cik_code,null,:my_date)";
+        $sql = "INSERT INTO tickers_proedgard_updates (subject, ticker, insdate, downloaded, filed_date, updated_date, tested_for_today, otc)  VALUES  (:emailsubject, :ticker, now(), null, :my_date, null, null, null)";
         try {
             $result = $db->prepare($sql);
             $result->execute($params);
